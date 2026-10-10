@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Sandbox 2020 - BlockWorld</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body, html { margin: 0; padding: 0; overflow: hidden; width: 100%; height: 100%; font-family: sans-serif; }
+        #game-container { width: 100%; height: 100%; display: block; }
+        #ui-overlay { position: absolute; top: 10px; left: 10px; color: white; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; pointer-events: none; }
+        #crosshair { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 24px; pointer-events: none; }
+        #hotbar { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; background: rgba(0,0,0,0.6); padding: 5px; border-radius: 8px; }
+        .slot { width: 50px; height: 50px; background: rgba(255,255,255,0.2); border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; cursor: pointer; }
+        .slot.active { border-color: yellow; background: rgba(255,255,0,0.3); }
+    </style>
+</head>
+<body>
+    <div id="crosshair">+</div>
+    <div id="ui-overlay">
+        <h3>BlockWorld 2020 Multiplayer</h3>
+        <p>WASD to Move | Space to Jump | Click to Mine/Place</p>
+        <p id="player-count">Players Online: 1</p>
+    </div>
+    <div id="hotbar">
+        <div class="slot active" data-block="1">Grass</div>
+        <div class="slot" data-block="2">Dirt</div>
+        <div class="slot" data-block="3">Stone</div>
+        <div class="slot" data-block="4">Wood</div>
+    </div>
+    <canvas id="game-container"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/game.js"></script>
+</body>
+</html>
